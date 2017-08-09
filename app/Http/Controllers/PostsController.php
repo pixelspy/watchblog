@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
+
 
 class PostsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     * Creates an exception for index and show for non-users
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +39,7 @@ class PostsController extends Controller
         // created_at and desc allows to get the 10 most recent blogposts first
         
         return view('posts.index')->with('posts', $posts);
+       // return view('pages.index')->with('posts', $posts);
 
         // return Post::where('title', 'Post Two')->get();
         // for a WHERE query
@@ -51,13 +65,37 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+          // nullable: so that image is NOT required, max at 1999 to fit in 2MG
         ]);
+
+        // Handle file upload
+        if($request->hasFile('cover_image')){
+            // Get a file name with the extension
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just Extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //Create filename to store (unique filename)
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            //Upload the image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+//            ->storeAs('public/cover_images' will store the images in : /storage/app/public
+//            $ php artisan storage:link  will create that private folder in the /public folder and link
+
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+//            this is the default img if no img was uploaded
+        }
 
         // Create Post
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
+        $post->cover_image = $fileNameToStore;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post created');
@@ -86,7 +124,15 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        // Check for correct user, a user cannot edit a post that isn't theres
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
+        return view('posts.edit')->with('post', $post);
+
     }
 
     /**
@@ -98,7 +144,39 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        // Handle file upload
+        if($request->hasFile('cover_image')){
+            // Get a file name with the extension
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just Extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //Create filename to store (unique filename)
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            //Upload the image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+//            ->storeAs('public/cover_images' will store the images in : /storage/app/public
+//            $ php artisan storage:link  will create that private folder in the /public folder and link
+
+        }
+
+        // Create Post
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        if($request->hasFile('cover_image')) {
+            $post->cover_image = $fileNameToStore;
+            // if no images are updated, the same one remains
+        }
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post updated');
+        // success relates to our message file
     }
 
     /**
@@ -109,6 +187,18 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        // Check for correct user, a user cannot delete a post that isn't theres
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
+        if($post->cover_image != 'noimage.jpg'){
+             // Delete the image
+            Storage::delete('public/cover_images/'.$post->cover_image);
+        }
+
+        $post->delete();
+        return redirect('/posts')->with('success', 'Post removed');
     }
 }

@@ -34,3 +34,9 @@ Route::resource('posts', 'PostsController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+// 'except' erases the route categories.create
+// 'only' + the list of the routes wanted
+
+

@@ -19,7 +19,7 @@
                             </tr>
                             @foreach($posts as $post)
                                 <tr>
-                                    <td>{{$post->title}}</td>
+                                    <td><a href="/posts/{{$post->id}}">{{$post->title}}</a></td>
                                     <td><a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a> </td>
                                     <td>
                                         {!! Form::open

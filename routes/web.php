@@ -31,12 +31,17 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('posts', 'PostsController');
-Auth::routes();
 
+// Authentification
+Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
+
+// Categories
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 // 'except' erases the route categories.create
 // 'only' + the list of the routes wanted
 
-
+// Contact
+Route::get('/contact', 'PagesController@getContact');
+Route::post('/contact', 'PagesController@postContact');

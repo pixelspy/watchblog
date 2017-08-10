@@ -19,8 +19,8 @@
         <div class="bgImgIndex">
             @include('include.navbar')
             <div class="container">
-                @yield('content')
                 @include('include.messages')
+                @yield('content')
             </div>
         </div>
     </div>

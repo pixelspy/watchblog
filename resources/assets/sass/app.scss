@@ -55,3 +55,19 @@
   margin-top: 10vh;
   padding: 0;
 }
+
+.containerEditDelete{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.containerHeaderBtn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.editBtn{
+  margin: 5px;
+}

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav id="header" class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
 
@@ -26,6 +26,7 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="/posts">All Posts</a></li>
                 <li><a href="/contact">Contact</a></li>
+
             </ul>
 
             <!-- Right Side Of Navbar -->

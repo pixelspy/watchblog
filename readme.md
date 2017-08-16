@@ -63,6 +63,7 @@ Comme administratrice je souhaite accéder à mon profil afin de modifier certai
 - Tache fonctionnelle 18: Icones GitHub et Slides
 - Tache fonctionnelle 19: Redaction de la BaseLine du site.
 - Tache Fonctionnelle 20: Affichage de l'index des users inscrits.
+- Tache fonctionnelle 21: Documentation Laravel Laravel API Documentation [Generator](https://learninglaravel.net/laravel-api-documentation-generator)
 
 ## Tutorial & Notes
 

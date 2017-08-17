@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests;
 use App\Post;
+use App\User;
 use Mail;
 
 
@@ -42,7 +43,7 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getcontact(){
+    public function getContact(){
         return view('pages.contact');
     }
     
@@ -76,5 +77,7 @@ class PagesController extends Controller
         return redirect('/')->with('success', 'Your email was sent!');
 
     }
+
+
 
 }

@@ -10,7 +10,7 @@
 
     <div class="form-group">
         {{Form::label('email', 'Email')}}
-        {{Form::textarea('email', $user->email, ['id' => 'article-ckeditor', 'class'=>'form-control', 'placeholder' => 'email'])}}
+        {{Form::text('email', $user->email, ['class'=>'form-control', 'placeholder' => 'email'])}}
     </div>
 
     {{Form::hidden('_method', 'PUT')}}

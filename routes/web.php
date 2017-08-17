@@ -11,31 +11,16 @@
 |
 */
 
-/*
-Route::post('/hello', function () {
-    //return view('welcome');
-    return 'hello world';
-});
-
-Route::delete('/hello/html', function () {
-    //return view('welcome');
-    return '<h1>hello world</h1>';
-});
-
-Route::get('/users/{id}/{name}', function($id, $name){
-    return 'this is user ' . $name.' with an id of ' .$id;
-});*/
-
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 
+// cf https://laravel.com/docs/5.4/controllers#resource-controllers
 Route::resource('posts', 'PostsController');
 
 // Auth
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
-
 
 // Categories
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
@@ -46,13 +31,6 @@ Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 Route::get('/contact', 'PagesController@getContact');
 Route::post('/contact', 'PagesController@postContact');
 
-//Search Page
-//Route::get('/search', 'SearchController@index');
-
-// Live Chat
-/*Route::get('/chat', function() {
-    return view('chat');
-});*/
-
 // Users Index
-Route::resource('users', 'UsersController');
+Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
+

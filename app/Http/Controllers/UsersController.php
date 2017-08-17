@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['edit', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,37 +25,15 @@ class UsersController extends Controller
 
         return view('users.index')->with('users', $users);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
+    
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::find($id);
         return view('users.show')->with('user', $user);
     }
 
@@ -64,36 +48,38 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        return view('users.edit')->with('user', $user);
-
+        if (Auth::user()->can('update', $user)) {
+            return view('users.edit')->with('user', $user);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' =>'required',
-        ]);
+        if (Auth::user()->can('update', $user)) {
+            $this->validate($request, [
+                'name' => 'required',
+                'email' => 'required',
+            ]);
 
-        $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
 
-        $user->save();
+            $user->save();
+        }
 
         return redirect('/dashboard')->with('success', 'Profile updated');
 
@@ -104,10 +90,10 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }

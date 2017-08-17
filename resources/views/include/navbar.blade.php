@@ -38,8 +38,6 @@
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
-                    {{--<a href="/users/edit"><img class="imgPara" src="/img/para.svg" alt=""></a>--}}
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -48,6 +46,7 @@
                     <ul class="dropdown-menu" role="menu">
                             <li><a href="/dashboard">Dashboard</a> </li>
                             <li><a href="/categories">Categories</a> </li>
+                            <li><a href="{{ route('profile') }}"></a>Profile</li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

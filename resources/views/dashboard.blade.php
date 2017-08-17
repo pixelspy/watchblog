@@ -7,6 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
+
                 <div class="panel-body row">
                     <a href="/posts/create" class="btn btn-primary">Create Post</a>
                     <h3>Your blog Posts</h3>

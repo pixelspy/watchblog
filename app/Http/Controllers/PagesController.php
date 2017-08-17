@@ -13,13 +13,22 @@ use Mail;
 
 class PagesController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
 
         return view('pages.index')->with('posts', $posts);
 
     }
-
+    /**
+     * Show the application about page.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function about(){
         $data = array(
             'title' => 'About this site',
@@ -28,10 +37,22 @@ class PagesController extends Controller
         return view('pages.about')-> with($data);
     }
 
+    /**
+     * Show the application contact page.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getcontact(){
         return view('pages.contact');
     }
-
+    
+    /**
+     * Show the form for creating a new contact.
+     * @param  \Illuminate\Http\Request 
+     * request to validate posted message
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function postContact(Request $request){
         $this->validate($request, [
             'email' => 'required|email',

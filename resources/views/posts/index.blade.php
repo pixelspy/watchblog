@@ -1,7 +1,8 @@
 @extends('layouts.blog')
 
 @section('content')
-    <h1>Post</h1>
+    <h1>All Posts</h1>
+    <hr>
     @if(count($posts) > 0)
         @foreach($posts as $post)
             <div class="well">

@@ -32,7 +32,7 @@ Route::get('/about', 'PagesController@about');
 
 Route::resource('posts', 'PostsController');
 
-// Authentification
+// Auth
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
@@ -45,3 +45,14 @@ Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 // Contact
 Route::get('/contact', 'PagesController@getContact');
 Route::post('/contact', 'PagesController@postContact');
+
+//Search Page
+//Route::get('/search', 'SearchController@index');
+
+// Live Chat
+/*Route::get('/chat', function() {
+    return view('chat');
+});*/
+
+// Users Index
+Route::resource('users', 'UsersController');

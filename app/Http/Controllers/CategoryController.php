@@ -7,10 +7,14 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct() {
         $this->middleware('auth');
-        // this locks down our CTR to be used only bu Auth
+        // this locks down our CTR to be used only by Auth
     }
     
     
@@ -34,7 +38,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request : to validate the new category
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)

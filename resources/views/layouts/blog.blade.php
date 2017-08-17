@@ -15,17 +15,17 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body id="app">
-    <div class="wrapper">
-        <div class="content" style="min-height:80vh">
-                @include('include.navbar')
-                <div class="container">
-                    @include('include.messages')
-                    @yield('content')
-                </div>
-            @include('include.footer')
+<exemple></exemple>
 
-        </div>
-    </div>
+    @include('include.navbar')
+    <main class="main-content container">
+
+        @include('include.messages')
+                @yield('content')
+
+    </main>
+    @include('include.footer')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>

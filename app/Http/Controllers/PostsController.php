@@ -12,6 +12,7 @@ use App\Category;
 class PostsController extends Controller
 {
     /**
+     * @resource PostsController instance
      * Create a new controller instance.
      * Creates an exception for index and show for non-users
      *
@@ -61,7 +62,7 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request : to validate posted article
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -136,7 +137,7 @@ class PostsController extends Controller
             $cats[$category->id] = $category->name;
         }
 
-        // Check for correct user, a user cannot edit a post that isn't theres
+        // Check for correct user, a user cannot edit a post that isn't there
         if(auth()->user()->id !==$post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
@@ -149,6 +150,7 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * request to validate updated post
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -211,6 +213,6 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/posts')->with('success', 'Post removed');
+        return redirect('/dashboard')->with('success', 'Post removed');
     }
 }

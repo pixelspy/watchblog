@@ -2,10 +2,24 @@
 @section('content')
     <div class="containerIndex">
         <div class=" page-header text-center">
-            <h1>Welcome to the Watch Blog</h1>
+            <h1>A tech blog for SimplonProd team</h1>
+            <br>
             <p>This is a blog created from Laravel. It is challenge from SimplonProd.</p>
-            <p><a target="_blank" href="https://github.com/pixelspy/watchblog">Here is the Github Page for this project</a></p>
-            <p><a target="_blank" href="http://slides.com/pixelspy/laravel#/">The slide I made for this project</a></p>
+            <br>
+            <section class="col-md-12 row">
+                <div class="col-md-6 col-md-offset-3 row">
+                    <p class="col-md-6 ">Source code on
+                        <a target="_blank" href="https://github.com/pixelspy/watchblog">
+                            <img class="float-right imgGit" src="/img/github.png" alt="">
+                        </a>
+                    </p>
+                    <p class="col-md-6">Get my slide on
+                        <a target="_blank" href="http://slides.com/pixelspy/laravel#/">
+                            <img src="/img/slides.png" alt="" class="float-right imgGit">
+                        </a>
+                    </p>
+                </div>
+            </section>
         </div>
 
         <div class="containerPosts">

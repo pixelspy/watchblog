@@ -39,7 +39,7 @@ Comme utilistratrice, je souhaite accéder à une liste de tous les utilisateurs
 Comme utilisatrice je souhaite cliquer sur la catégorie d'un article afin d'arriver sur une page qui affiche les articles de cette catégorie.
 
 # User Story 8: 
-Comme administratrice je souhaite accéder à mon profil afin de modifier certains paramètres.
+Comme administratrice je souhaite accéder à mon profil afin de modifier les paramètres.
 
 ## Taches Fonctionnelles:
 
@@ -63,7 +63,12 @@ Comme administratrice je souhaite accéder à mon profil afin de modifier certai
 - Tache fonctionnelle 18: Icones GitHub et Slides
 - Tache fonctionnelle 19: Redaction de la BaseLine du site.
 - Tache Fonctionnelle 20: Affichage de l'index des users inscrits.
-- Tache fonctionnelle 21: Documentation Laravel Laravel API Documentation [Generator](https://learninglaravel.net/laravel-api-documentation-generator)
+- Tache fonctionnelle 21: Documentation Laravel Documentation [Generator](https://www.phpdoc.org/)
+- Tache fonctionnelle 22: Amélioration de l'affichage de la date 
+- Tache fonctionnelle 23: Formulaire d'édition des paramètres du profil admin (edit, update) 
+- Tache fonctionnelle 24: Avatar pour admin : upload d'image dans le formulaire d'inscription 
+
+
 
 ## Tutorial & Notes
 

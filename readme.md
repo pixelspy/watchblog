@@ -41,6 +41,13 @@ Comme utilisatrice je souhaite cliquer sur la catégorie d'un article afin d'arr
 # User Story 8: 
 Comme administratrice je souhaite accéder à mon profil afin de modifier les paramètres.
 
+# User Story 9: 
+Comme une administratrice, je souhaite télécharger mon avatar, afin de personnaliser mon profil.
+
+# User Story 8: 
+Comme administratrice, je souhaite commenter afin de donner mon avis sur un article.
+
+
 ## Taches Fonctionnelles:
 
 - Tache fonctionnelle 1: Affichage des 10 derniers articles sur la page d'accueil.
@@ -67,6 +74,7 @@ Comme administratrice je souhaite accéder à mon profil afin de modifier les pa
 - Tache fonctionnelle 22: Amélioration de l'affichage de la date 
 - Tache fonctionnelle 23: Formulaire d'édition des paramètres du profil admin (edit, update) 
 - Tache fonctionnelle 24: Avatar pour admin : upload d'image dans le formulaire d'inscription 
+- Tache fonctionnelle 25: Formulaire pour commentaires, relation commentaires / articles, relation commentaires / admins
 
 
 

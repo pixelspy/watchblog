@@ -13,4 +13,7 @@ class Category extends Model
         return $this->hasMany('App\Post');
         //one to many relationship : one category can have many posts
     }
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

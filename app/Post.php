@@ -4,17 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+// http://carbon.nesbot.com/docs
 
 class Post extends Model
 {
-    // Table Name
-    //protected $table = 'othername';
-    // Primary key
-    //public $primaryKey = 'itemid';
-    // Timestamps
-    //public $timestamps = 'true';
 
-    
     // a post belongs to one user
     public function user(){
         return $this->belongsTo('App\User');
@@ -30,10 +24,18 @@ class Post extends Model
     // and name is the key from our DB table
 
 
-    // change formate of created_at / timestamps
+    // change format of created_at / timestamps
     public function getCreatedAtAttribute($attr) {
         return Carbon::parse($attr)->format('d/m/Y'); //Change the format to whichever you desire
     }
+
+    // one post has many comments
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+        // (Comment::class) is like  :  (App\Comment)
+    }
+    
 }
 
 

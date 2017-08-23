@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,14 +11,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+/*        DB::table('categories')->insert([
             'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
         ]);
 
-        factory(App\User::class, 25)->create()->each(function ($u) {
+        factory(App\Category::class, 15)->create()->each(function ($u) {
             $u->posts()->save(factory(App\Post::class)->make());
-        });
+        });*/
     }
 }

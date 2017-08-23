@@ -18,6 +18,12 @@
                         <h3>{{$post->title}}</h3>
                         <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
                     </a>
+                    <br>
+                    <small>Written on {{$post->created_at}}</small>
+                    <br>
+                    <small>by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
+                    <hr>
+                    <small><a href="/categories/{{$post->category->id}}">Category: {{$post->category->name}}</a></small>
                 </div>
             @endforeach
         </div>

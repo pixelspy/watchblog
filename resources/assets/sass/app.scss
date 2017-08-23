@@ -88,18 +88,19 @@
   padding:10px;
 }
 
-
 footer {
-  height: 10vh;
+  height: 8vh;
   background-color: $brand-greyL;
 }
 
 .footerContainer {
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
 }
 
-.row2 {
-  padding-top: 20px;
+.containerUsers {
+  display: flex;
+  justify-content: flex-start;
 }

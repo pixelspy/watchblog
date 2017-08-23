@@ -14,12 +14,13 @@
 
                         <div class="col-md-8 col-sm-8">
                             <h3>{{$post->title}}</h3>
-                            <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+                </a>
+                            <small>Written on {{$post->created_at}}
+                            <small>by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
                             <hr>
-                            <small>Category: {{$post->category->name}}</small>
+                            <small><a href="/categories/{{$post->category->id}}">Category: {{$post->category->name}}</a></small>
                         </div>
                     </div>
-                </a>
             </div>
         @endforeach
         {{$posts->links()}}

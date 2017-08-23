@@ -1,28 +1,44 @@
 @extends('layouts.blog')
 @section('content')
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <h1>All Categories</h1>
             <table class="table">
                 <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if($categories)
                     @foreach($categories as $category)
                         <tr>
-                            <th scope="row">{{$category->id}}</th>
-                            <td>{{$category->name}}</td>
+                            <td><a href="/categories/{{$category->id}}">{{$category->name}}</a></td>
+                            @if(!Auth::guest())
+                                {{--if the user is not a guest, they cannot see the buttons delete and edit--}}
+                                @if(Auth::user()->id == $category->user_id)
+                                    {{--if the user is the writer of the post, they can see the buttons delete and edit--}}
+                                    <td><a href="/categories/{{$category->id}}/edit" class="btn btn-default">E</a></td>
+                                    <td>
+                                        {!! Form::open
+                                            ([
+                                            'action' => ['CategoryController@destroy', $category->id],
+                                            'method' => 'POST',
+                                            'class' => 'pull-right'
+                                            ])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        {{Form::submit('D', ['class' => 'btn btn-danger'])}}
+
+                                        {!! Form::close()!!}
+                                    </td>
+                                @endif
+                            @endif
                         </tr>
                     @endforeach
-                    @endif
+                @endif
                 </tbody>
             </table>
         </div>
-
         <div class="col-md-3">
             <div class="well">
                 {!! Form::open(['route' => 'categories.store']) !!}
@@ -33,6 +49,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-
     </div>
 @endsection

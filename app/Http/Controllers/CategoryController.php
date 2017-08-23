@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
+use App\User;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    /*public function __construct() {
         $this->middleware('auth');
         // this locks down our CTR to be used only by Auth
-    }
+    }*/
     
     
     /**
@@ -43,28 +50,39 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // saves a new category in the DB, and redirects to INDEX
-        $this->validate($request, array(
-            'name' => 'required|max:255 '
-        ));
 
-        $category = new Category;
-        $category->name = $request->name;
-        $category->save();
+        // saves a new category in the DB, and redirects to Cat.INDEX
+                $this->validate($request, array(
+                    'name' => 'required|max:255 '
+                ));
 
-        return redirect()->route('categories.index')->with('success', 'Category created');
+                //$user = User::findOrFail($user_id);
+
+                $category = new Category;
+                $category->name = $request->name;
+                //$category->user()->associate($user);
+                $category->user_id = auth()->user()->id;
+
+                $category->save();
+
+                return redirect()->route('categories.index')->with('success', 'Category created');
 
     }
+    
 
     /**
      * Display the specified resource.
-     *
+
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+
+        $posts = Post::all();
+        $category_id = Post::all();
+        $category = Category::find($id);
+        return view('categories.show')->with('category', $category)->with('posts', $posts)->with('category_id', $category_id);
     }
 
     /**
@@ -75,7 +93,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        
+        // Check for correct user, a user cannot edit a post that isn't there
+        if(auth()->user()->id !==$category->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -98,6 +123,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        // Check for correct user, a user cannot delete a post that isn't theres
+        if(auth()->user()->id !==$category->user_id){
+            return redirect('/categories')->with('error', 'Unauthorized Page');
+        }
+
+        $category->delete();
+        return redirect('/categories')->with('success', 'Category removed');
     }
 }

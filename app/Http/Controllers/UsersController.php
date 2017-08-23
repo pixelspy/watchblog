@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use Image;
 
 class UsersController extends Controller
 {
@@ -25,7 +26,7 @@ class UsersController extends Controller
 
         return view('users.index')->with('users', $users);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -82,8 +83,25 @@ class UsersController extends Controller
         }
 
         return redirect('/dashboard')->with('success', 'Profile updated');
+    }
+    public function profile()
+    {
+        return view('users.profile', array('user' => Auth::user()));
+    }
 
+    public function updateAvatar(Request $request, User $user)
+    {
+        // Handle the user upload of avatar
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename));
 
+            $user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+        return view('users.profile', array('user' => Auth::user()));
 
     }
 

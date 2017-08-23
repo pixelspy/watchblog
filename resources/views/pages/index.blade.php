@@ -22,6 +22,15 @@
             </section>
         </div>
 
+        <section class="row">
+            @foreach($posts as $post)
+                <button class="btn btn-default"><a href="#"><p class="col-md-4" style="font-size:15px; vertical-align: middle;">{{$post->category->name}}</p></a></button>
+                @endforeach
+                <br>
+                <hr>
+        </section>
+
+
         <div class="containerPosts">
             <div class="row1">
                     @if(count($posts) > 0)
@@ -30,11 +39,11 @@
                                 <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
                                 <div class="card-text">
                                     <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-                                    {{--<small>Written on {{$post->created_at}}</small>--}}
+                                    <small>Written on {{$post->created_at}}</small>
                                     <br>
                                     <small>by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
                                     <hr>
-                                    {{--<small>Category: {{$post->category->name}}</small>--}}
+                                    <small><a href="/categories/{{$post->category->id}}">Category: {{$post->category->name}}</a></small>
                                 </div>
                             </div>
                         @endforeach

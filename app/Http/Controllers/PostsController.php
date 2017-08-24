@@ -42,8 +42,11 @@ class PostsController extends Controller
 
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         // created_at and desc allows to get the 10 most recent blogposts first
-        
-        return view('posts.index')->with('posts', $posts);
+
+        $categories = Category::all();
+
+
+        return view('posts.index')->with('posts', $posts)->with('categories', $categories);
        // return view('pages.index')->with('posts', $posts);
 
         // return Post::where('title', 'Post Two')->get();

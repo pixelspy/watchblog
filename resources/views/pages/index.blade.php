@@ -23,9 +23,11 @@
         </div>
 
         <section class="row">
+            @if(count($categories) > 0)
             @foreach($categories as $category)
                 <a href="/categories/{{$category->id}}"><button class="btn btn-default"><p class="col-md-4" style="font-size:15px; vertical-align: middle;">{{$category->name}}</p></button></a>
             @endforeach
+            @endif
                 <br><hr>
         </section>
 
@@ -41,7 +43,7 @@
                                     <br>
                                     <small>by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
                                     <hr>
-                                    <small><a href="/categories/{{$post->category->id}}">Category: {{$post->category->name}}</a></small>
+                                    <small><a href="/categories/{{$category->id}}">Category: {{$category->name}}</a></small>
                                 </div>
                             </div>
                         @endforeach

@@ -44,8 +44,8 @@ Comme administratrice je souhaite accéder à mon profil afin de modifier les pa
 # User Story 9: 
 Comme une administratrice, je souhaite télécharger mon avatar, afin de personnaliser mon profil.
 
-# User Story 8: 
-Comme administratrice, je souhaite commenter afin de donner mon avis sur un article.
+# User Story 10: 
+Comme administratrice et utilisatrice, je souhaite commenter afin de donner mon avis sur un article.
 
 
 ## Taches Fonctionnelles:
@@ -63,7 +63,7 @@ Comme administratrice, je souhaite commenter afin de donner mon avis sur un arti
 - Tache fonctionnelle 11: Web design + choisir un thème bootstrap.
 - Tache fonctionnelle 12: Front end avec Laravel
 - Tache fonctionnelle 13: Github, rédaction du README, code source et documentation
-- Tache fonctionnelle 14: hebergement gratuit sur 0000webhost.com, upload files
+- Tache fonctionnelle 14: Heberger le site sur [webhost] (https://fr.000webhost.com), upload files
 - Tache Fonctionnelle 15: Lien sur catégorie + page d'articles triés en fonction de la catégorie.
 - Tache fonctionnelle 16: Afficher profil d'un admin
 - Tache fonctionnelle 17: Modification de profil admin.
@@ -75,7 +75,6 @@ Comme administratrice, je souhaite commenter afin de donner mon avis sur un arti
 - Tache fonctionnelle 23: Formulaire d'édition des paramètres du profil admin (edit, update) 
 - Tache fonctionnelle 24: Avatar pour admin : upload d'image dans le formulaire d'inscription 
 - Tache fonctionnelle 25: Formulaire pour commentaires, relation commentaires / articles, relation commentaires / admins
-
 
 
 ## Tutorial & Notes

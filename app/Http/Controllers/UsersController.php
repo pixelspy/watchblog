@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use Image;
+use App\Category;
 
 class UsersController extends Controller
 {
@@ -35,7 +36,9 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show')->with('user', $user);
+        $categories = Category::all();
+
+        return view('users.show')->with('user', $user)->with('categories', $categories);
     }
 
     public function showPosts() {

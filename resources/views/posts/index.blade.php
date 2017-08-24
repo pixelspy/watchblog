@@ -6,18 +6,22 @@
     @if(count($posts) > 0)
         @foreach($posts as $post)
             <div class="well">
-                <a href="/posts/{{$post->id}}">
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
-                            <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+                            <a href="/posts/{{$post->id}}">
+                                <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+                            </a>
                         </div>
 
                         <div class="col-md-8 col-sm-8">
-                            <h3>{{$post->title}}</h3></a>
-                            <small>Written on {{$post->created_at}}
+                            <a href="/posts/{{$post->id}}">
+                                <h3>{{$post->title}}</h3>
+                            </a>
+
+                            <small>Written on {{$post->created_at}}</small>
                             <small>by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
                             <hr>
-                            <small><a href="/categories/{{$post->category->id}}">Category: {{$post->category->name}}</a></small>
+                            <a href="/categories/{{$post->category->id}}"><small>Category: {{$post->category->name}}</small></a>
                         </div>
                     </div>
             </div>

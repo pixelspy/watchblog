@@ -31,16 +31,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>{{$post->title}}</h1>
-            <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+            <img class="img-responsive centered" style="width:70%" src="/storage/cover_images/{{$post->cover_image}}">
             <br><br>
             <div>
                 {!!$post->body!!}
                 {{--one '{' and one '!' is to parse the html from the CKEditor--}}
             </div>
             <hr>
-            <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+            <small>Written on {{$post->created_at}} by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
             <br>
-            <small>Category: {{$post->category->name}}</small>
+            <a href="/categories/{{$post->category->id}}"><small>Category: {{$post->category->name}}</small></a>
             <br><br>
             <hr>
         </div>

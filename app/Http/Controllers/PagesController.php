@@ -10,7 +10,7 @@ use App\Http\Requests;
 use App\Post;
 use App\User;
 use Mail;
-
+use App\Category;
 
 class PagesController extends Controller
 {
@@ -21,8 +21,9 @@ class PagesController extends Controller
      */
     public function index(){
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::all();
 
-        return view('pages.index')->with('posts', $posts);
+        return view('pages.index')->with('posts', $posts)->with('categories', $categories);
 
     }
     /**

@@ -23,13 +23,11 @@
         </div>
 
         <section class="row">
-            @foreach($posts as $post)
-                <button class="btn btn-default"><a href="#"><p class="col-md-4" style="font-size:15px; vertical-align: middle;">{{$post->category->name}}</p></a></button>
-                @endforeach
-                <br>
-                <hr>
+            @foreach($categories as $category)
+                <a href="/categories/{{$category->id}}"><button class="btn btn-default"><p class="col-md-4" style="font-size:15px; vertical-align: middle;">{{$category->name}}</p></button></a>
+            @endforeach
+                <br><hr>
         </section>
-
 
         <div class="containerPosts">
             <div class="row1">

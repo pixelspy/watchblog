@@ -1,5 +1,8 @@
 @extends('layouts.blog')
 @section('content')
+    <div>
+        <a href="/" class="btn btn-default">Go Back</a>
+    </div>
 <div class="row col-md-8 col-md-offset-2">
         <h3>Posts under <strong>{{$category->name}}</strong> category :</h3>
         <hr><br>

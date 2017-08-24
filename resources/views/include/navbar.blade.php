@@ -46,7 +46,8 @@
 
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/posts/create">Create a Post</a></li>
+                        <li><a href="{{ route('users.edit', ['id' => Auth::user()->id]) }}">Profile</a></li>
                         <li><a href="/categories">Categories</a> </li>
                             <li>
                                 <a href="{{ route('logout') }}"

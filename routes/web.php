@@ -31,6 +31,7 @@ Route::get('/dashboard', 'DashboardController@index');
 // Categories
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 
+
 // 'except' erases the route categories.create
 // 'only' + the list of the routes wanted
 
@@ -40,5 +41,5 @@ Route::post('/contact', 'PagesController@postContact');
 
 // Users 
 Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
-Route::get('/profile', 'UsersController@profile');
-Route::post('/profile', 'UsersController@updateAvatar');
+
+

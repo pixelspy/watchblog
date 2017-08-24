@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Category;
 use App\Comment;
+use App\User;
 
 
 

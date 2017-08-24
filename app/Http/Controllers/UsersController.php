@@ -71,24 +71,34 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         if (Auth::user()->can('update', $user)) {
-            $this->validate($request, [
-                'name' => 'required',
-                'email' => 'required',
-            ]);
+            // Handle the user upload of avatar
+            if($request->hasFile('avatar')){
+                $avatar = $request->file('avatar');
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename));
 
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
+                $user->avatar = $filename;
+                $user->save();
+            } else {
+                $this->validate($request, [
+                    'name' => 'required',
+                    'email' => 'required',
+                ]);
 
-            $user->save();
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+
+                $user->save();
+            }
+            return redirect()->back()->with('success', 'Profile updated');
+
+        } else {
+            return redirect('/');
         }
 
-        return redirect('/dashboard')->with('success', 'Profile updated');
     }
-    public function profile()
-    {
-        return view('users.profile', array('user' => Auth::user()));
-    }
-
+    
+/*
     public function updateAvatar(Request $request, User $user)
     {
         // Handle the user upload of avatar
@@ -103,7 +113,7 @@ class UsersController extends Controller
         }
         return view('users.profile', array('user' => Auth::user()));
 
-    }
+    }*/
 
     /**
      * Remove the specified resource from storage.

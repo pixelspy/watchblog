@@ -8451,7 +8451,7 @@ button.close {
 }
 
 footer {
-  height: 8vh;
+  height: 5vh;
   background-color: #F3E5FA;
 }
 
@@ -8466,8 +8466,7 @@ footer {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  padding-top: 1.2vh;
 }
 
 .containerUsers {
@@ -8477,5 +8476,15 @@ footer {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+.containerEditProfile {
+  margin-top: 9vh;
+  margin-bottom: 8vh;
+}
+
+.containerEditProfile2 {
+  margin-top: 2vh;
+  margin-bottom: 10vh;
 }
 

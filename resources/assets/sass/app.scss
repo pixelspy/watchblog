@@ -89,7 +89,7 @@
 }
 
 footer {
-  height: 8vh;
+  height: 5vh;
   background-color: $brand-greyL;
 }
 
@@ -97,10 +97,20 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-content: center;
+  padding-top: 1.2vh;
 }
 
 .containerUsers {
   display: flex;
   justify-content: flex-start;
+}
+
+.containerEditProfile {
+  margin-top: 9vh;
+  margin-bottom: 8vh;
+}
+
+.containerEditProfile2 {
+  margin-top: 2vh;
+  margin-bottom: 10vh;
 }

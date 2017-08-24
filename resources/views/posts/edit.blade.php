@@ -13,16 +13,6 @@
         {{Form::select('category_id', $categories, $post->category_id, ['class' => 'form-control'])}}
     </div>
 
-
-{{--    <div class="form-group">
-        {{Form::label('category_id', 'Category:')}}
-        <select class="form-control" name="category_id">
-            @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
-            @endforeach
-        </select>
-    </div>--}}
-
     <div class="form-group">
         {{Form::label('body', 'Body')}}
         {{Form::textarea('body', $post->body, ['id' => 'article-ckeditor', 'class'=>'form-control', 'placeholder' => 'Body text'])}}

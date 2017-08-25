@@ -1,6 +1,10 @@
 
 ## Watch Blog
 
+# Published blog
+
+[WATCHBLOG](http://139.59.160.13/)
+
 
 ## Context
 
@@ -82,6 +86,3 @@ Comme administratrice et utilisatrice, je souhaite commenter afin de donner mon 
 [Slide](http://slides.com/pixelspy/laravel/)
 
 
-## Published blog
-
-[WATCHBLOG]()

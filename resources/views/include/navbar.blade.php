@@ -23,12 +23,9 @@
             </ul>
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/posts">All Posts</a></li>
                 <li><a href="/users">Users</a></li>
-                {{--<li><a href="/search">Search</a></li>--}}
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
-
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -58,6 +55,7 @@
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
+                                <!-- cf : https://laravel.com/docs/5.4/csrf  -->
                                 </form>
                             </li>
                         </ul>
@@ -67,5 +65,3 @@
         </div>
     </div>
 </nav>
-
-<!--<li><a href="/posts/create">Create Post</a> </li> --!>

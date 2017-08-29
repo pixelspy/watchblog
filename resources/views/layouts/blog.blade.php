@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    <!-- CSRF Token (security) -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- security
 
     <title>{{ config('app.name', 'WATCHBLOG') }}</title>
 
@@ -15,22 +14,20 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body id="app">
-<exemple></exemple>
+  @include('include.navbar')
+  <main class="main-content container">
+      @include('include.messages')
+      @yield('content')
+  </main>
+  @include('include.footer')
 
-    @include('include.navbar')
-    <main class="main-content container">
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+  <script>
+      CKEDITOR.replace( 'article-ckeditor' );
+      // CK EDITOR (forms) https://docs.ckeditor.com/#!/guide/dev_installation
+  </script>
 
-        @include('include.messages')
-                @yield('content')
-
-    </main>
-    @include('include.footer')
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script>
 </body>
 </html>

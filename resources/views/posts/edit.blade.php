@@ -7,12 +7,10 @@
         {{Form::label('title', 'Title')}}
         {{Form::text('title', $post->title, ['class'=>'form-control', 'placeholder' => 'Title'])}}
     </div>
-
     <div class="form-group">
         {{Form::label('category_id', "Category:")}}
         {{Form::select('category_id', $categories, $post->category_id, ['class' => 'form-control'])}}
     </div>
-
     <div class="form-group">
         {{Form::label('body', 'Body')}}
         {{Form::textarea('body', $post->body, ['id' => 'article-ckeditor', 'class'=>'form-control', 'placeholder' => 'Body text'])}}
@@ -20,9 +18,7 @@
     <div class="form-group">
         {{Form::file('cover_image')}}
     </div>
-
     {{Form::hidden('_method', 'PUT')}}
-
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

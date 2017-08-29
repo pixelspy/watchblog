@@ -47,12 +47,12 @@ class PagesController extends Controller
     public function getContact(){
         return view('pages.contact');
     }
-    
+
     /**
      * Show the form for creating a new contact.
-     * @param  \Illuminate\Http\Request 
+     * @param  \Illuminate\Http\Request
      * request to validate posted message
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function postContact(Request $request){
@@ -66,9 +66,8 @@ class PagesController extends Controller
           'email' => $request->email,
            'subject' => $request->subject,
             'bodyMessage' => $request->message,
-            'survey' => ['Q1' => "hello", 'Q2' => 'YES']
         );
-        
+
         Mail::send('emails.contact', $data, function($message) use ($data){
             $message ->from($data['email']);
             $message->to('mahana.delacour@gmail.com');

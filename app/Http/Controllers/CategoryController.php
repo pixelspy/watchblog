@@ -22,8 +22,8 @@ class CategoryController extends Controller
         $this->middleware('auth');
         // this locks down our CTR to be used only by Auth
     }*/
-    
-    
+
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +35,7 @@ class CategoryController extends Controller
         // display a form to create categories
 
         $categories = Category::all();
-        
+
         return view('categories.index')->withCategories($categories);
 
     }
@@ -67,21 +67,18 @@ class CategoryController extends Controller
                 return redirect()->route('categories.index')->with('success', 'Category created');
 
     }
-    
+
 
     /**
      * Display the specified resource.
 
-     * @param  int  $id
+     * @param  int  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($category)
     {
-
-        $posts = Post::all();
-        $category_id = Post::all();
-        $category = Category::find($id);
-        return view('categories.show')->with('category', $category)->with('posts', $posts)->with('category_id', $category_id);
+        $category = DB::table('categories')->where($category, '=' $post->category_id)->get();
+        return view('categories.show')->with('category', $category);
     }
 
     /**
@@ -93,7 +90,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        
+
         // Check for correct user, a user cannot edit a post that isn't there
         if(auth()->user()->id !==$category->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
@@ -119,7 +116,7 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect('/categories')->with('success', 'Category updated');
-        
+
     }
 
     /**

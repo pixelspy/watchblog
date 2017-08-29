@@ -8,11 +8,11 @@
             <div class="containerEditDelete ">
                 @if(!Auth::guest())
                     {{--if the user is not a guest, they cannot see the buttons delete and edit--}}
+
                     @if(Auth::user()->id == $post->user_id)
                         {{--if the user is the writer of the post, they can see the buttons delete and edit--}}
 
                         <a href="/posts/{{$post->id}}/edit" class="btn btn-default editBtn">Edit</a>
-
                         {!! Form::open
                         ([
                         'action' => ['PostsController@destroy', $post->id],
@@ -20,9 +20,7 @@
                         'class' => 'btn btn-standard'
                         ])!!}
                         {{Form::hidden('_method', 'DELETE')}}
-
                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-
                         {!! Form::close()!!}
                     @endif
                 @endif
@@ -52,6 +50,7 @@
                     <li class="list-group-item">
                         <strong>
                             {{$comment->created_at->diffForHumans()}}: &nbsp;
+                            <!-- https://laravel.com/docs/5.3/eloquent-mutators#date-mutators -->
                         </strong>
                         {{$comment->comment}}  <small>by {{$comment->name}}</small>
                     </li>

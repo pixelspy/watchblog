@@ -79,7 +79,6 @@ class UsersController extends Controller
                 $avatar = $request->file('avatar');
                 $filename = time() . '.' . $avatar->getClientOriginalExtension();
                 Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename));
-
                 $user->avatar = $filename;
                 $user->save();
             } else {
@@ -87,37 +86,16 @@ class UsersController extends Controller
                     'name' => 'required',
                     'email' => 'required',
                 ]);
-
                 $user->name = $request->input('name');
                 $user->email = $request->input('email');
-
                 $user->save();
             }
             return redirect()->back()->with('success', 'Profile updated');
-
         } else {
             return redirect('/');
         }
-
     }
     
-/*
-    public function updateAvatar(Request $request, User $user)
-    {
-        // Handle the user upload of avatar
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename));
-
-            $user = Auth::user();
-            $user->avatar = $filename;
-            $user->save();
-        }
-        return view('users.profile', array('user' => Auth::user()));
-
-    }*/
-
     /**
      * Remove the specified resource from storage.
      *

@@ -22,17 +22,13 @@
                 {{Form::label('name', 'Name')}}
                 {{Form::text('name', $user->name, ['class'=>'form-control', 'placeholder' => 'Name'])}}
             </div>
-
             <div class="form-group">
                 {{Form::label('email', 'Email')}}
                 {{Form::text('email', $user->email, ['class'=>'form-control', 'placeholder' => 'email'])}}
             </div>
-
             {{Form::hidden('_method', 'PUT')}}
-
             {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
             {!! Form::close() !!}
         </div>
     </div>
-
 @endsection

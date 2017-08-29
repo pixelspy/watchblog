@@ -11,35 +11,36 @@
 |
 */
 
-
+// HomePage
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 
-// cf https://laravel.com/docs/5.4/controllers#resource-controllers
+// Contact
+Route::get('/contact', 'PagesController@getContact');
+Route::post('/contact', 'PagesController@postContact');
+
+// Doc on resource routes : cf https://laravel.com/docs/5.4/controllers#resource-controllers
+
 
 // Posts
 Route::resource('posts', 'PostsController');
 
+
 // Comments
 Route::post('comments/{post_id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
+// 'uses as comments.store' is used in the form of the view posts.show
 
 
 // Auth
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
+
 // Categories
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
-
-
 // 'except' erases the route categories.create
 // 'only' + the list of the routes wanted
 
-// Contact
-Route::get('/contact', 'PagesController@getContact');
-Route::post('/contact', 'PagesController@postContact');
 
-// Users 
+// Users
 Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
-
-

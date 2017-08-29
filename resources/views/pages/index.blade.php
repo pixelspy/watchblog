@@ -22,15 +22,6 @@
             </section>
         </div>
 
-        <section class="row">
-            @if(count($categories) > 0)
-            @foreach($categories as $category)
-                <a href="/categories/{{$category->id}}"><button class="btn btn-default"><p class="col-md-4" style="font-size:15px; vertical-align: middle;">{{$category->name}}</p></button></a>
-            @endforeach
-            @endif
-                <br><hr>
-        </section>
-
         <div class="containerPosts">
             <div class="row1">
                     @if(count($posts) > 0)
@@ -43,11 +34,12 @@
                                     <br>
                                     <small>by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
                                     <hr>
-                                    <small><a href="/categories/{{$category->id}}">Category: {{$category->name}}</a></small>
+                                    <small><a href="/categories/{{$category->id}}">Category: {{$post->category->name}}</a></small>
                                 </div>
                             </div>
                         @endforeach
                         {{$posts->links()}}
+                        <!-- pagination : https://laravel.com/docs/5.4/pagination-->
                     @else
                         <p>No Posts Found!</p>
                     @endif

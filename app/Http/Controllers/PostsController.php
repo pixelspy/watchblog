@@ -198,16 +198,6 @@ class PostsController extends Controller
         // success relates to our message file
     }
 
-   /* public function showPostsByCat()
-    {
-        $post = Post::all();
-        $categories = Category::all();
-        $cats = [];
-        foreach ($categories as $category) {
-            $cats[$category->id] = $category->name;
-        }
-        return view('posts.category')->with('post', $post)->withCategories($cats);
-    }*/
 
     /**
      * Remove the specified resource from storage.

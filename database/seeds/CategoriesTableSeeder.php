@@ -11,12 +11,17 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-/*        DB::table('categories')->insert([
+
+        factory(App\Category::class, 7)->create();
+/*
+        DB::table('categories')->insert([
             'name' => str_random(10),
+           'created_at' => ,
+           'user_id' => ,
         ]);
 
         factory(App\Category::class, 15)->create()->each(function ($u) {
-            $u->posts()->save(factory(App\Post::class)->make());
+            $u->users()->save(factory(App\Post::class)->make());
         });*/
     }
 }

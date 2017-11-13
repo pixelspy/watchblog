@@ -11,6 +11,7 @@
 |
 */
 use App\Http\Controllers\PostsController;
+use Carbon\Carbon;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
@@ -31,6 +32,19 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
         'title' => $faker->words(5, true),
         'body' => $faker->text(600),
         'cover_image' => $faker->text(100),
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+        'category_id' => function () {
+            return factory(App\Category::class)->create()->id;
+        }
+    ];
+});
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->words(1, true),
+        'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         'user_id' => function () {
             return factory(App\User::class)->create()->id;
         }

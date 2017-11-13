@@ -2,10 +2,7 @@
 @section('content')
     <div class="containerIndex">
         <div class=" page-header text-center">
-            <h1>A tech blog for SimplonProd team</h1>
-            <br>
-            <p>This is a blog created from Laravel. It is challenge for SimplonProd.</p>
-            <br>
+            <h1>WatchBlog</h1>
             <section class="col-md-12 row">
                 <div class="col-md-6 col-md-offset-3 row">
                     <p class="col-md-6 ">Source code on

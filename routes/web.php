@@ -28,6 +28,10 @@ Route::post('comments/{post_id}', ['uses' => 'CommentsController@store', 'as' =>
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
+
+
 // Categories
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 

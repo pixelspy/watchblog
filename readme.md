@@ -1,8 +1,8 @@
 
 ## Watch Blog
 
-[Version 1:] (/var/www/watchblog/version1.md)
-[Version 2:] (/var/www/watchblog/version2.md)
+[Version 1:] (../blob/master/version1.md)
+[Version 2:] (../blob/master/version2.md)
 
 ## Tutorial & Notes
 

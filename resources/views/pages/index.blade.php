@@ -2,21 +2,7 @@
 @section('content')
     <div class="containerIndex">
         <div class=" page-header text-center">
-            <h1>WatchBlog</h1>
-            <section class="col-md-12 row">
-                <div class="col-md-6 col-md-offset-3 row">
-                    <p class="col-md-6 ">Source code on
-                        <a target="_blank" href="https://github.com/pixelspy/watchblog">
-                            <img class="float-right imgGit" src="/img/github.png" alt="">
-                        </a>
-                    </p>
-                    <p class="col-md-6">Get my slide on
-                        <a target="_blank" href="http://slides.com/pixelspy/laravel#/">
-                            <img src="/img/slides.png" alt="" class="float-right imgGit">
-                        </a>
-                    </p>
-                </div>
-            </section>
+            <h1>MeufCode</h1>
         </div>
 
         <section class="row">

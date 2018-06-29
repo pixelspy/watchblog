@@ -1,6 +1,7 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
 
 // Variables
 @import "variables";
@@ -11,9 +12,15 @@
 // Custom CSS
 @import 'custom';
 
+* {
+  font-family: 'Playfair Display', serif;
+}
 
-#app {
-  background-color: $brand-white;
+body {
+  background-color: white;
+}
+
+#root {
   color: $text-color;
   min-height: 100vh;
   display: flex;
@@ -22,8 +29,85 @@
 
 .main-content {
   flex: 1;
+  // height: 100%;
 }
 
+#logo_header {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  position: static;
+  margin-bottom: 40px;
+}
+
+// NavBar
+.linkLarge {
+  color: $brand-grey;
+  margin-right: 30px;
+}
+
+#signUp_btn {
+  background-color: $brand-blue;
+  // border-radius: 5px;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+// Categories
+
+.btnCategory {
+  border: none;
+  background: none;
+  font-size:15px;
+  vertical-align: middle;
+  color: $brand-grey;
+}
+
+.catContainer {
+  margin: 100px, 0px, 30px, 0px;
+}
+
+p.categoryText:hover {
+  color: $brand-primary;
+}
+
+//
+.roundAvatar {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+}
+
+
+
+// button, input[type="submit"], input[type="reset"] {
+//     background: none;
+//     color: inherit;
+//     border: none;
+//     padding: 0;
+//     font: inherit;
+//     cursor: pointer;
+//     outline: inherit;
+// }
+
+.btnNoCss {
+  background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+}
+.imgLarge {
+  width: 100%;
+}
 .imgGit {
   width: 40px;
   opacity: 0.7;
@@ -31,6 +115,15 @@
 
 .imgPara {
   width: 20px;
+}
+
+.iconSmall {
+  width: 40px;
+}
+
+.iconMedium {
+  width: 80px;
+
 }
 
 // Home Page Bootstrap Pinterest-like grid
@@ -62,6 +155,10 @@
   padding: 5vh 0 0 0;
 }
 
+.post_text{
+  font-size: 19px
+}
+
 
 .panel-default {
   margin-top: 10vh;
@@ -80,9 +177,7 @@
   flex-direction: row;
 }
 
-.editBtn{
-  margin: 5px;
-}
+
 #header {
   background:$brand-white;
   padding:10px;
@@ -113,4 +208,16 @@ footer {
 .containerEditProfile2 {
   margin-top: 2vh;
   margin-bottom: 10vh;
+}
+
+.mainDivStyle {
+  display: flex;
+  flex-direction: row;
+}
+
+.divStyle {
+  justify-content: flex-start;
+  width: 35%;
+  padding: 20px;
+  margin: 30px;
 }

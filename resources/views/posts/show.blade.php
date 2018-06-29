@@ -1,51 +1,79 @@
 @extends('layouts.blog')
+
 @section('content')
-        <div class="containerHeaderBtn">
-            <div>
-                <a href="/posts" class="btn btn-default">Go Back</a>
-            </div>
+  <div class="containerHeaderBtn">
+        <div>
+            <a href="/" class="btn btn-default">Go Back</a>
+        </div>
+    </div>
 
-            <div class="containerEditDelete ">
-                @if(!Auth::guest())
-                    {{--if the user is not a guest, they cannot see the buttons delete and edit--}}
-                    @if(Auth::user()->id == $post->user_id)
-                        {{--if the user is the writer of the post, they can see the buttons delete and edit--}}
+        <br>
+        <br>
+    <div class="row">
+        <div class="col-md-10">
+            <div >
+                @if ( isset($post->user->id) && isset($post->user->name) && isset($post->user->avatar) )
+                    <a class="flex_align_side" href="/users/{{$post->user->id}}">
+                        <div class="">
+                            <img
+                                src="/uploads/avatars/{{$post->user->avatar}}" alt="Your Avatar Picture"
+                                class="roundAvatar">
+                        </div>
 
-                        <a href="/posts/{{$post->id}}/edit" class="btn btn-default editBtn">Edit</a>
-
-                        {!! Form::open
-                        ([
-                        'action' => ['PostsController@destroy', $post->id],
-                        'method' => 'POST',
-                        'class' => 'btn btn-standard'
-                        ])!!}
-                        {{Form::hidden('_method', 'DELETE')}}
-
-                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-
-                        {!! Form::close()!!}
-                    @endif
+                        <p>{{$post->user->name}}</p>
+                    </a>
                 @endif
             </div>
-        </div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h1>{{$post->title}}</h1>
-            <img class="img-responsive centered" style="width:70%" src="/storage/cover_images/{{$post->cover_image}}">
+
+            <div class="flex_box_space_between">
+                <h1>{{$post->title}}</h1>
+                <div class="containerEditDelete ">
+                    @if(!Auth::guest())
+                        {{--if the user is not a guest, they cannot see the buttons delete and edit--}}
+                        @if(Auth::user()->id == $post->user_id)
+                            {{--if the user is the writer of the post, they can see the buttons delete and edit--}}
+
+                            <a href="/posts/{{$post->id}}/edit">
+                                <img class="iconSmall" src="/img/pencil.png" alt="editing pencil">
+                            </a>
+
+                            {!! Form::open
+                            ([
+                            'action' => ['PostsController@destroy', $post->id],
+                            'method' => 'POST',
+                            'class' => ''
+                            ])!!}
+                            {{Form::hidden('_method', 'DELETE')}}
+                            {{Form::button(
+                                '<img class="iconSmall" src="/img/bin.png" alt="deleting bin">',
+                                ['type' => 'submit', 'class' => 'btnNoCss'] )
+                            }}
+                            {!! Form::close()!!}
+                        @endif
+                    @endif
+                </div>
+            </div>
+
+            @if (isset($post->created_at) && isset($post->category->id) && isset($post->category->name))
+                <p>Written on {{$post->created_at}} | <a href="/categories/{{$post->category->id}}" class="categoryText">{{$post->category->name}}</a></p>
+            @endif
+            <img class="img-responsive centered imgLarge" src="/storage/cover_images/{{$post->cover_image}}">
             <br><br>
-            <div>
+            <div class="post_text">
                 {!!$post->body!!}
                 {{--one '{' and one '!' is to parse the html from the CKEditor--}}
             </div>
             <hr>
-            <small>Written on {{$post->created_at}} by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
-            <br>
-            <a href="/categories/{{$post->category->id}}"><small>Category: {{$post->category->name}}</small></a>
-            <br><br>
-            <hr>
+            {{-- @if (isset($post->created_at) && isset($post->user->id) && isset($post->user->name) && isset($post->category->id) && isset($post->category->name))
+                <small>Written on {{$post->created_at}} by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small>
+                <br>
+                <a href="/categories/{{$post->category->id}}"><small>Category: {{$post->category->name}}</small></a>
+                <br><br>
+                <hr>
+            @endif --}}
         </div>
     </div>
-    <div class="row col-md-8 col-md-offset-2">
+    <div class="row col-md-10">
         <div class="comment">
             <ul class="list-group">
         @foreach($post->comments as $comment)
@@ -59,62 +87,8 @@
             </ul>
         </div>
     </div>
-    {{--comments form--}}
-        @if(Auth::guest())
-            <div class="row">
-                <div id="comment-form" class="col-md-8 col-md-offset-2">
-                    {{ Form::open(['route' => ['comments.store', $post->id, 'method' => 'POST']]) }}
-                        <div class="row">
-                            <div class="col-md-6">
-                                {{ Form::label('name', "Name:") }}
-                                {{ Form::text('name', null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-6">
-                                {{ Form::label('email', 'Email:') }}
-                                {{ Form::text('email', null, ['class' => 'form-control']) }}
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                    {{ Form::label('comment', "Comment:") }}
-                                    {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '5']) }}
+    @include('include.comment')
 
-                                    {{ Form::submit('Add comment', ['class' => 'btn btn-success btn-block']) }}
-                                </div>
-                        </div>
-                    {{ Form::close() }}
-                </div>
-            </div>
-            @endif
-            @if(Auth::user())
-                <div class="row">
-                    <div id="comment-form" class="col-md-8 col-md-offset-2">
-                        {{ Form::open(['route' => ['comments.store', $post->id, 'method' => 'POST']]) }}
-                        <div class="row">
-                            <div class="col-md-6">
-                                {{ Form::label('name', "Name:") }}
-                                {{ Form::text('name', Auth::user()->name, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-6">
-                                {{ Form::label('email', 'Email:') }}
-                                {{ Form::text('email', Auth::user()->email, ['class' => 'form-control']) }}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{ Form::label('comment', "Comment:") }}
-                                {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '5']) }}
-
-                                {{ Form::submit('Add comment', ['class' => 'btn btn-success btn-block']) }}
-                            </div>
-                        </div>
-                        {{ Form::close() }}
-                    </div>
-                </div>
-            @endif
-
-            <br><br>
-
+    <br><br>
 @endsection

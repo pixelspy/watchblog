@@ -1,22 +1,31 @@
 <?php
 
-namespace App;
+namespace WatchBlog;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 // http://carbon.nesbot.com/docs
 
+use Backpack\CRUD\CrudTrait;
+
+
 class Post extends Model
 {
+  use CrudTrait;
+
+  protected $table = 'posts';
+  protected $fillable = ['title', 'body', 'user_id', 'cover_image', 'category_id']; // what i want to fill
+
+
 
     // a post belongs to one user
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('WatchBlog\User');
     }
-    
+
     // a post belongs to one category
     public function category(){
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('WatchBlog\Category');
     }
 
     // category() is the method, and we have access to all the elements in our DB
@@ -32,10 +41,8 @@ class Post extends Model
     // one post has many comments
     public function comments()
     {
-        return $this->hasMany('App\Comment');
-        // (Comment::class) is like  :  (App\Comment)
+        return $this->hasMany('WatchBlog\Comment');
+        // (Comment::class) is like  :  (WatchBlog\Comment)
     }
-    
+
 }
-
-

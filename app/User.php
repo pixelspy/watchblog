@@ -1,12 +1,18 @@
 <?php
 
-namespace App;
+namespace WatchBlog;
 
+use Backpack\CRUD\CrudTrait;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    use CrudTrait;
+    use HasRoles;
+
     use Notifiable;
     protected $table = 'users';
 
@@ -28,12 +34,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     // a user has many posts
     public function posts(){
-        return $this->hasMany('App\Post');
+        return $this->hasMany('WatchBlog\Post');
     }
     public function comments(){
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('WatchBlog\Comment');
     }
+
+
 }

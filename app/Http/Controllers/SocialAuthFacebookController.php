@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Socialite;

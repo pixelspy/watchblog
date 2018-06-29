@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Providers;
+namespace WatchBlog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Laracasts\Generators\GeneratorsServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        // $this->app->register(GeneratorsServiceProvider::class);
+
+      if ($this->app->environment() == "local") {
+       $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
+    }
     }
 }

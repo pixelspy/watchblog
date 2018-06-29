@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'MC'),
+    'name' => env('APP_NAME', 'Watchblog'),
 
     /*
     |--------------------------------------------------------------------------
@@ -179,11 +179,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        WatchBlog\Providers\AppServiceProvider::class,
+        WatchBlog\Providers\AuthServiceProvider::class,
+        // WatchBlog\Providers\BroadcastServiceProvider::class,
+        WatchBlog\Providers\EventServiceProvider::class,
+        WatchBlog\Providers\RouteServiceProvider::class,
 
     ],
 

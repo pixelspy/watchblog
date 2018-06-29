@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Policies;
+namespace WatchBlog\Policies;
 
-use App\User;
+use WatchBlog\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -12,8 +12,8 @@ class UserPolicy
     /**
      * Determine whether the user can view the user.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $user
+     * @param  \WatchBlog\User  $user
+     * @param  \WatchBlog\User  $user
      * @return mixed
      */
     public function view(User $user, User $user_to_view)
@@ -24,7 +24,7 @@ class UserPolicy
     /**
      * Determine whether the user can create users.
      *
-     * @param  \App\User  $user
+     * @param  \WatchBlog\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -35,8 +35,8 @@ class UserPolicy
     /**
      * Determine whether the user can update the user.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $user
+     * @param  \WatchBlog\User  $user
+     * @param  \WatchBlog\User  $user
      * @return mixed
      */
     public function update(User $user, User $user_to_update)
@@ -47,8 +47,8 @@ class UserPolicy
     /**
      * Determine whether the user can delete the user.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $user
+     * @param  \WatchBlog\User  $user
+     * @param  \WatchBlog\User  $user
      * @return mixed
      */
     public function delete(User $user, User $user_to_delete)

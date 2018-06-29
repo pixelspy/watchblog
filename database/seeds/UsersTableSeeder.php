@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('secret'),
         ]);
 
-        factory(App\User::class, 25)->create()->each(function ($u) {
-            $u->posts()->save(factory(App\Post::class)->make());
+        factory(WatchBlog\User::class, 25)->create()->each(function ($u) {
+            $u->posts()->save(factory(WatchBlog\Post::class)->make());
         });
     }
 }

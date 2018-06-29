@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
-use App\Post;
+use WatchBlog\Category;
+use WatchBlog\Post;
 
 class CategoryController extends Controller
 {

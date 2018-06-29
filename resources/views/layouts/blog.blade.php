@@ -15,7 +15,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body id="app">
-<exemple></exemple>
 
     @include('include.navbar')
     <main class="main-content container">

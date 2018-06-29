@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 
-use App\Http\Requests;
-use App\Post;
-use App\User;
+use WatchBlog\Http\Requests;
+use WatchBlog\Post;
+use WatchBlog\User;
 use Mail;
-use App\Category;
+use WatchBlog\Category;
 
 class PagesController extends Controller
 {

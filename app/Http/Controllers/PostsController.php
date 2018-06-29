@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Post;
-use App\Category;
-use App\Comment;
-use App\User;
+use WatchBlog\Post;
+use WatchBlog\Category;
+use WatchBlog\Comment;
+use WatchBlog\User;
 
 
 
@@ -96,7 +96,7 @@ class PostsController extends Controller
 //            $ php artisan storage:link  will create that private folder in the /public folder and link
 
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'noimage.png';
 //            this is the default img if no img was uploaded
         }
 
@@ -110,7 +110,7 @@ class PostsController extends Controller
         $post->save();
 
         return redirect('/posts')->with('success', 'Post created');
-        // success relates to our message file
+        // success related to our message file
 
 
     }

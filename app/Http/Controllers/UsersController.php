@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\User;
+use WatchBlog\User;
 use Image;
-use App\Category;
+use WatchBlog\Category;
 
 class UsersController extends Controller
 {

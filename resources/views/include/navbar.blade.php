@@ -1,4 +1,4 @@
-<nav id="header" class="navbar navbar-default">
+<nav id="header" class="navbar">
     <div class="container">
         <div class="navbar-header">
 
@@ -12,7 +12,8 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'MC') }}
+                WB
+                {{-- {{ config('app.name', 'WB') }} --}}
             </a>
         </div>
 
@@ -22,8 +23,8 @@
                 &nbsp;
             </ul>
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/posts">All Posts</a></li>
+                {{-- <li><a href="/">Home</a></li> --}}
+                {{-- <li><a href="/posts">All Posts</a></li> --}}
                 <li><a href="/users">Users</a></li>
                 {{--<li><a href="/search">Search</a></li>--}}
                 <li><a href="/about">About</a></li>
@@ -35,8 +36,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}" class="linkLarge">Login</a></li>
+                    <li><a href="{{ route('register') }}" id="signUp_btn">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">

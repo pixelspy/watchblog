@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use WatchBlog\User;
 
 
 class DashboardController extends Controller

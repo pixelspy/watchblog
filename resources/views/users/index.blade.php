@@ -1,8 +1,9 @@
 @extends('layouts.blog')
 @section('content')
 
-    All users :
     <div class="container">
+      <h3>Users posting on WatchBlog</h3>
+      <br>
         <div class="row">
             @foreach($users as $user)
                 <div class="col-md-4 containerUsers">

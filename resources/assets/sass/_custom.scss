@@ -1,2 +1,26 @@
-body{
+$font-family: 'Playfair Display', serif;
+
+.align_flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.flex_align_side {
+  display:flex;
+  padding-left: 40px;
+}
+.flex_box_space_between{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+
+
+// Colors
+$brand-primary: black;
+$brand-grey: #818181;
+$brand-light-grey: rgb(237, 237, 237) ;
+$brand-blue: #CDFFD2;
+$brand-dark-grey: rgba(29, 29, 29, 0.82);

@@ -4,11 +4,13 @@
         <div class="col-md-6">
             <h1>All Categories</h1>
             <table class="table">
-                <thead>
+                <br>
+                {{-- <thead>
                     <tr>
                         <th>Name</th>
                     </tr>
-                </thead>
+                </thead> --}}
+
                 <tbody>
                 @if($categories)
                     @foreach($categories as $category)
@@ -18,7 +20,9 @@
                                 {{--if the user is not a guest, they cannot see the buttons delete and edit--}}
                                 @if(Auth::user()->id == $category->user_id)
                                     {{--if the user is the writer of the post, they can see the buttons delete and edit--}}
-                                    <td><a href="/categories/{{$category->id}}/edit" class="btn btn-default">E</a></td>
+                                    <td><a href="/categories/{{$category->id}}/edit" class="">
+                                        <img class="iconSmall" src="/img/pencil.png" alt="editing pencil">
+                                    </a></td>
                                     <td>
                                         {!! Form::open
                                             ([
@@ -27,8 +31,10 @@
                                             'class' => 'pull-right'
                                             ])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
-                                        {{Form::submit('D', ['class' => 'btn btn-danger'])}}
-
+                                        {{Form::button(
+                                            '<img class="iconSmall" src="/img/bin.png" alt="deleting bin">',
+                                            ['type' => 'submit', 'class' => 'btnNoCss'] )
+                                        }}
                                         {!! Form::close()!!}
                                     </td>
                                 @endif

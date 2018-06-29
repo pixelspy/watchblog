@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace WatchBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment;
-use App\Post;
+use WatchBlog\Comment;
+use WatchBlog\Post;
 
 class CommentsController extends Controller
 {
@@ -39,7 +39,7 @@ class CommentsController extends Controller
         $this->validate($request, array(
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'comment' =>'required|min:5|max:2000'
+            'comment' =>'required|min:1|max:2000'
         ));
 
         $post = Post::findOrFail($post_id);

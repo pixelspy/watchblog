@@ -76,7 +76,7 @@ class PostsController extends Controller
             'title' => 'required',
             'category_id' => 'required|integer',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'required|image|nullable|max:1999'
           // nullable: so that image is NOT required, max at 1999 to fit in 2MG
         ]);
 

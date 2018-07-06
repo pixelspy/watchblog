@@ -16,6 +16,8 @@
 // });
 
 
+// Route::get('/searchindex','SearchController@index');
+// Route::get('/searchsearch','SearchController@search');
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');

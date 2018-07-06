@@ -8454,6 +8454,18 @@ p.categoryText:hover {
   border-radius: 50%;
 }
 
+.alert_success {
+  color: rgba(29, 29, 29, 0.82);
+  background-color: #CDFFD2;
+  padding: 20px;
+}
+
+.alert_danger {
+  color: #CDFFD2;
+  background-color: rgba(29, 29, 29, 0.82);
+  padding: 20px;
+}
+
 .btnNoCss {
   background: none;
   color: inherit;
@@ -8496,7 +8508,7 @@ p.categoryText:hover {
 
 .item {
   display: inline-block;
-  width: 100%;
+  max-width: 100%;
   background-color: white;
 }
 

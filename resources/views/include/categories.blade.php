@@ -8,4 +8,4 @@
       </a>
   @endforeach
   @endif
-    </section>
+</section>

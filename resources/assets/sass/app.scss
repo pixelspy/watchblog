@@ -84,7 +84,17 @@ p.categoryText:hover {
   border-radius: 50%;
 }
 
+.alert_success {
+  color: $brand-dark-grey;
+  background-color: $brand-blue;
+  padding: 20px;
+}
 
+.alert_danger {
+  color: $brand-blue;
+  background-color: $brand-dark-grey;
+  padding: 20px;
+}
 
 // button, input[type="submit"], input[type="reset"] {
 //     background: none;
@@ -139,7 +149,7 @@ p.categoryText:hover {
 
 .item {
   display: inline-block;
-  width: 100%;
+  max-width: 100%;
   background-color: $brand-white;
 }
 

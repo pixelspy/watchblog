@@ -6,7 +6,6 @@
             <a href="/" class="btn btn-default">Go Back</a>
         </div>
     </div>
-
         <br>
         <br>
     <div class="row">

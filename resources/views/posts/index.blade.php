@@ -25,7 +25,10 @@
                                 <hr>
                             @endif
                             @if (isset($category->id) && isset($category->name))
-                                <a href="/categories/{{$category->id}}"><small>Category: {{$category->name}}</small></a>
+                                <a
+                                href="/categories/{{$category->id}}">
+                                  <small>Category: {{$category->name}}</small>
+                                </a>
                             @endif
                         </div>
                     </div>

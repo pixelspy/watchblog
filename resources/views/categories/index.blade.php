@@ -5,17 +5,15 @@
             <h1>All Categories</h1>
             <table class="table">
                 <br>
-                {{-- <thead>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </thead> --}}
-
                 <tbody>
                 @if($categories)
                     @foreach($categories as $category)
                         <tr>
-                            <td><a href="/categories/{{$category->id}}">{{$category->name}}</a></td>
+                            <td>
+                              <a href="/categories/{{$category->id}}">
+                                {{$category->name}}
+                              </a>
+                            </td>
                             @if(!Auth::guest())
                                 {{--if the user is not a guest, they cannot see the buttons delete and edit--}}
                                 @if(Auth::user()->id == $category->user_id)

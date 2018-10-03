@@ -33,24 +33,11 @@ class PostsController extends Controller
     public function index()
     {
         // return the data from model Post:
-
         //$posts = Post::all();
-
-        //$posts = Post::orderBy('title', 'desc')->get();
-        //$posts = Post::orderBy('title', 'desc')->take(10)->get();
-        // desc : to get the most recent posts first
-
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         // created_at and desc allows to get the 10 most recent blogposts first
-
         $categories = Category::all();
-
-
         return view('posts.index')->with('posts', $posts)->with('categories', $categories);
-       // return view('pages.index')->with('posts', $posts);
-
-        // return Post::where('title', 'Post Two')->get();
-        // for a WHERE query
     }
 
     /**
